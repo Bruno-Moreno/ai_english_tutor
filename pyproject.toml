@@ -1,0 +1,22 @@
+[project]
+name = "ai-english-tutor"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "Nelson Bruno Moreno",email = "55368022+Bruno-Moreno@users.noreply.github.com"}
+]
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "ruff (>=0.12.3,<0.13.0)",
+    "pyaudio (>=0.2.14,<0.3.0)",
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.group.dev.dependencies]
+ipykernel = "^6.29.5"
+
