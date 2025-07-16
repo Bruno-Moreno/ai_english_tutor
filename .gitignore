@@ -210,7 +210,7 @@ __marimo__/
 .DS_Store
 
 # Audio
-#audio/ 
+audio/ 
 
 # Transcription
-#transcription/ 
+transcription/ 
