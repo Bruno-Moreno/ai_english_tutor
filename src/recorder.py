@@ -2,16 +2,20 @@ import pyaudio
 import wave
 import threading
 
+
+def recorder_text(text):
+    return f'\n\033[32m{text}\033[0m'
+
 def wait_for_enter(stop_flag):
-    input("Press Enter to stop recording...\n")
+    input(recorder_text("Press Enter to stop recording..."))
     stop_flag.append(True)
+
 
 class Recorder:
     def __init__(self, audio_name: str):
         self.audio_name = audio_name
         self.audio_path = "audio"
         self.audio_file = f"{self.audio_path}/{self.audio_name}"
-
         self.chunk = 4096
         self.format = pyaudio.paInt16
         self.channels = 1
@@ -19,7 +23,8 @@ class Recorder:
 
 
     def record(self):
-        print(f"Recording to {self.audio_file}...")
+        print(recorder_text(f"Recording to {self.audio_file}..."))
+        input(recorder_text("Press Enter to start recording..."))
 
         p = pyaudio.PyAudio()
 
@@ -56,4 +61,4 @@ class Recorder:
         wf.setframerate(self.rate)
         wf.writeframes(b''.join(frames))
         wf.close()
-        print(f"Recording stopped and saved to {self.audio_file}")
+        print(recorder_text(f"Recording stopped and saved to {self.audio_file}"))

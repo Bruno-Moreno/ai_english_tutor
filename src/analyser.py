@@ -1,19 +1,21 @@
 import requests
 import json
 
+def print_analyser_text(text):
+    print(f'\n\033[34m{text}\033[0m')
 
 class Analyser:
-    def __init__(self):
-        self.model = "llama3"
+    def __init__(self, model):
+        self.model = model
         self.num_predict = 50
         self.messages = [
             {
-                "role": "system",
-                "content": """
-                    You are an English teacher that helps correct grammar and explains mistakes simply.
-                    First, you need to spot grammatical mistakes and highlight them if they exist. 
-                    Then, you must answer the question of the student or continue the conversation with new questions.
-                    """,
+            "role": "system",
+            "content": """
+                You are an English teacher that helps correct grammar and explains mistakes simply.
+                If you spot a grammatical mistake, write the corrected version in brackets and explains why it is an error.
+                Then, you must continue the conversation with the student.
+                """,
             }
         ]
 
@@ -31,12 +33,12 @@ class Analyser:
         response_text = ""
         for line in response.iter_lines():
             response_text += json.loads(line.decode())["message"]["content"]
-        print(response_text)
+        print_analyser_text(response_text)
         self.messages.append({"role": "assistant", "content": response_text})
 
 
 if __name__ == "__main__":
     analyser = Analyser()
-    analyser.generate_response("Hello! wat is your name?")
+    analyser.generate_response("Hello! wat is you name?")
     for _ in range(3):
         analyser.generate_response(input("Response: "))

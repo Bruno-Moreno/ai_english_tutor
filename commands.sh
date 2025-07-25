@@ -14,3 +14,7 @@ cmake --build build -j --config Release
 
 # Transcribe
 ./build/bin/whisper-cli -f ../audio/jfk.wav
+
+# Ollama
+ollama run llama3
+
