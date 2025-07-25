@@ -1,5 +1,5 @@
 import subprocess
-import re 
+import re
 
 
 class Listener:
@@ -9,7 +9,9 @@ class Listener:
         self.audio_name = audio_name
         self.audio_file = f"{self.audio_path}/{self.audio_name}"
         self.transcription_path = "transcription"
-        self.transcription_file = f"{self.transcription_path}/{self.audio_name.split('.')[0]}.txt"
+        self.transcription_file = (
+            f"{self.transcription_path}/{self.audio_name.split('.')[0]}.txt"
+        )
 
         self.model_path_dict = {
             "base.en": "models/ggml-base.en.bin",

@@ -1,8 +1,10 @@
 import requests
 import json
 
+
 def print_analyser_text(text):
-    print(f'\n\033[34m{text}\033[0m')
+    print(f"\n\033[34m{text}\033[0m")
+
 
 class Analyser:
     def __init__(self, model):
@@ -10,8 +12,8 @@ class Analyser:
         self.num_predict = 50
         self.messages = [
             {
-            "role": "system",
-            "content": """
+                "role": "system",
+                "content": """
                 You are an English teacher that helps correct grammar and explains mistakes simply.
                 If you spot a grammatical mistake, write the corrected version in brackets and explains why it is an error.
                 Then, you must continue the conversation with the student.
